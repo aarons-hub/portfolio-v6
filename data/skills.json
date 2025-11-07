@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "title": "Adobe Creative Suite",
+    "percentage": "95%",
+    "image": "/images/adobe-skill-thumb.png",
+    "description": "From Photoshop to Illustrator and beyond, I’ve built a deep familiarity with Adobe Creative Suite that fuels my creative process.",
+    "sortorder": 1
+  },
+  {
+    "id": 2,
+    "title": "Looker Studio",
+    "percentage": "75%",
+    "image": "/images/treasury-looker-dash-thumb.png",
+    "description": "With Looker Studio, I turn analytics into accessible, insight-driven designs that make data easy to understand.",
+    "sortorder": 2
+  },
+  {
+    "id": 3,
+    "title": "Squiz Matrix",
+    "percentage": "70%",
+    "image": "/images/squiz-matrix.jpg",
+    "description": "With Squiz Matrix, I create structured yet expressive web environments that elevate content and user experience.",
+    "sortorder": 3
+  },
+  {
+    "id": 4,
+    "title": "Wordpress",
+    "percentage": "75%",
+    "image": "/images/wordpress-skill-thumb.png",
+    "description": "With WordPress, I build flexible, design-driven websites that balance creativity with clean functionality.",
+    "sortorder": 4
+  },
+  {
+    "id": 5,
+    "title": "SharePoint",
+    "percentage": "80%",
+    "image": "/images/sharepoint-skill.png",
+    "description": "From intranet hubs to public portals, I create SharePoint experiences that balance usability, design, and purpose.",
+    "sortorder": 5
+  },
+  {
+    "id": 6,
+    "title": "CSS - HTML - jQuery",
+    "percentage": "90%",
+    "image": "/images/jquery-skill-thumb.png",
+    "description": "With a strong foundation in HTML, CSS, and jQuery, I craft responsive, accessible interfaces that perform beautifully across devices.",
+    "sortorder": 6
+  },
+  {
+    "id": 7,
+    "title": "Photography",
+    "percentage": "90%",
+    "image": "/images/photography-skill-thumb.png",
+    "description": "With years of SLR photography experience, I capture images that balance technical precision with creative intent.",
+    "sortorder": 9
+  }
+]

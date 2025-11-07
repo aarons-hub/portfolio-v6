@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "thumb": "/images/emmy.png",
+    "name": "Emmy Kubainski",
+    "title": "Executive Director, Strategic Communications, Queensland Treasury",
+    "mobile": "0499 746 991",
+    "email": "Emmy.Kubainski@treasury.qld.gov.au",
+    "sortorder": 1
+  },
+  {
+    "id": 2,
+    "thumb": "/images/paul.png",
+    "name": "Paul Bebbington",
+    "title": "Manager, Online, Department of Customer Services, Open Data and Small Family Business",
+    "mobile": "0408 767 500",
+    "email": "Paul.Bebbington@cdsb.qld.gov.au",
+    "sortorder": 2
+  },
+  {
+    "id": 3,
+    "thumb": "/images/hilton.png",
+    "name": "Hilton Luke",
+    "title": "Manager, Web and Online Services, Department of Agriculture and Fisheries",
+    "mobile": "0476 870 849",
+    "email": "Hilton.Luke@dpi.qld.gov.au",
+    "sortorder": 3
+  }
+]

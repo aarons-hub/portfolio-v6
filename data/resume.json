@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "date": "1995-2009",
+    "company": ["Aaronline Design"],
+    "title": "Art Director / Manager",
+    "content": [
+      "Aaronline Design was my own one-stop boutique art studio offering hi-resolution product photography, Giclee printing, print design and web design",
+      "Financial Management and Client Liaison",
+      "Management of productivity software including Adobe Creative Suite, QuarkXPress, various web design applications",
+      "Digital SLR Photography and Photo Retouching"
+    ],
+    "url": "https://www.hydromet.net.au",
+    "sortorder": 1
+  },
+  {
+    "id": 2,
+    "date": "2009-2021",
+    "company": ["Brisbane Catholic Education", "Strategic Communications"],
+    "title": "Front End Web Developer / Designer",
+    "content": [
+      "Design, develop, maintain and deploy websites for BCE schools, BCE office and entities",
+      "Wireframing, web design, programming, development and maintenance of school websites",
+      "Database design, development and administration",
+      "Provide SharePoint public website administration training and online intranet documentation",
+      "Graphic design and digital SLR photography",
+      "Help desk support for school administrators and BCE staff through ServiceNow platform."
+    ],
+    "url": "https://www.hydromet.net.au",
+    "sortorder": 1
+  },
+  {
+    "id": 3,
+    "date": "2022-2023",
+    "company": [
+      "Department of Agriculture and Fisheries",
+      "Communications and engagement"
+    ],
+    "title": "Web Production Coordinator",
+    "content": [
+      "Managed content across DAF's corporate and franchise websites using the Squiz Matrix CMS, ensuring consistent brand presentation and site reliability",
+      "Built campaign sites on the Squiz platform in alignment with the Queensland Government Design System v.2 framework, while guaranteeing compliance with WCAG 2.1 accessibility standards",
+      "Developed web forms for routine corporate processes—such as enquiries and disaster declarations—using the Form.io platform to streamline user interactions and data collection."
+    ],
+    "url": "https://www.hydromet.net.au",
+    "sortorder": 2
+  },
+  {
+    "id": 4,
+    "date": "2023-2024",
+    "company": [
+      "Department of Energy and Public Works",
+      "Communications and engagement"
+    ],
+    "title": "Web Production Coordinator",
+    "content": [
+      "Managed content across EPW's corporate and franchise websites using SharePoint and Squiz Matrix CMS, ensuring consistent brand presentation and site reliability",
+      "Built campaign sites on the Squiz platform in alignment with the Queensland Government Design System v.2 framework, while guaranteeing compliance with WCAG 2.1 accessibility standards",
+      "Deliver analytics on website interactions and build dashboards in Looker Studio."
+    ],
+    "url": "https://www.hydromet.net.au",
+    "sortorder": 3
+  },
+  {
+    "id": 5,
+    "date": "2024-2025",
+    "company": ["Queensland Treasury", "Strategic Communications"],
+    "title": "Online Content Design Officer",
+    "content": [
+      "Collaborated with the broader communications team to plan, design, and develop digital and web solutions aligned with QT's strategic goals",
+      "Employed web development tools and content management systems (e.g., WordPress and Squiz), plus coding languages such as HTML, CSS and JavaScript to create and optimize engaging, client-focused online experiences",
+      "Applied expertise in client web journey design—including wireframing, UX, and mobile responsiveness—to deliver user-centered, accessible digital solutions",
+      "Leveraged data and analytics tools to inform, monitor, and evaluate the performance of online resources; provided recommendations for enhancements to achieve strategic outcomes."
+    ],
+    "url": "https://www.hydromet.net.au",
+    "sortorder": 4
+  }
+]

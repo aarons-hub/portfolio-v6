@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "title": "HOM3",
+    "path": "/"
+  },
+  {
+    "id": 2,
+    "title": "W0RK H/S7ORY",
+    "path": "/workhistory"
+  },
+  {
+    "id": 3,
+    "title": "SK/LLS",
+    "path": "/skills"
+  },
+  {
+    "id": 4,
+    "title": "POR7FOL/O",
+    "path": "/portfolio"
+  },
+  {
+    "id": 5,
+    "title": "CON7ACT",
+    "path": "#footer"
+  }
+]
