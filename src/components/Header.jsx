@@ -45,13 +45,13 @@ export const Header = () => {
               </div>
             </div>
 
-            <div className="navbar">
+            <div className="navbar custom">
               <ul className="navbar-nav">
                 {(menuItems || []).map((item) => (
                   <li className="nav-item" key={item.id}>
                     <NavLink
                       to={item.path}
-                      className="nav-link text-uppercase fw-normal"
+                      className={`nav-link text-uppercase fw-normal id-${item.id}`}
                       onClick={(e) => handleNavClick(e, item.path)}
                     >
                       {item.title}

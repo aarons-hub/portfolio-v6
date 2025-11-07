@@ -44,6 +44,28 @@ body {
   background-image: url("/images/noise.png");
 }
 
+.navbar.custom {
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        color: var(--primary-color-500);
+        &.active {
+          color: var(--secondary-color);
+        }
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+      .nav-link.id-5.active {
+        color: var(--primary-color-500);
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}
+
 .menu-wrapper {
   z-index: 9999;
   position: relative;
@@ -99,6 +121,12 @@ body {
           background-color: var(--secondary-color);
           transform: scale(0);
           transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
+      a.nav-link.nav-link.id-5.active {
+        color: #fff;
+        &:hover {
+          color: var(--secondary-color);
         }
       }
       a:hover.nav-link {

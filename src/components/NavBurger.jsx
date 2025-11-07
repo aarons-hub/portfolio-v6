@@ -110,7 +110,7 @@ export const NavBurger = () => {
                 <div key={item.id} className="nav-item">
                   <NavLink
                     to={item.path}
-                    className="nav-link"
+                    className={`nav-link id-${item.id}`}
                     onClick={(e) => handleNavClick(e, item.path)}
                   >
                     {item.title}
