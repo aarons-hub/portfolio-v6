@@ -54,7 +54,7 @@ body {
     transform: translate(600px, 0px);
 
     .menu-inner {
-      padding: 6rem 10rem 2rem 8rem;
+      padding: 6rem 1rem 2rem 1rem;
       display: flex;
       justify-content: space-between;
       flex-direction: column;
@@ -78,7 +78,7 @@ body {
       a.nav-link {
         text-decoration: none;
         color: #fff;
-        font-size: 2rem;
+        font-size: 1rem;
         text-transform: uppercase;
         transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -93,20 +93,20 @@ body {
           width: 10px;
           height: 10px;
           border-radius: 50%;
-          background-color: cornflowerblue;
+          background-color: var(--secondary-color);
           transform: scale(0);
           transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
       }
       a:hover.nav-link {
-        color: cornflowerblue;
+        color: var(--secondary-color);
 
         &::before {
           transform: scale(1);
         }
       }
       a.nav-link.active {
-        color: cornflowerblue;
+        color: var(--secondary-color);
       }
     }
   }
@@ -123,18 +123,59 @@ body {
     }
   }
 
-  .button.magnetic {
+  .button.burger-btn {
     background-color: var(--secondary-color) !important;
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    width: 72px;
+    height: 72px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
     .button-fill {
-      background-color: var(--primary-color) !important;
+      position: absolute;
+      top: -50%;
+      left: -25%;
+      width: 150%;
+      height: 200%;
+      border-radius: 50%;
+      background-color: var(--primary-color-300);
+      transform: translateY(120px) scale(1) rotate(0deg);
     }
-    &.burger-active {
-      .button-fill {
-        background-color: var(--primary-color-300) !important;
+    .burger {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+      position: relative;
+      z-index: 1;
+      .burger-line {
+        background: #fff;
+        height: 2px;
+        width: 40%;
+        transform-origin: center;
+        transition: all 0.3s ease;
       }
-      .line01,
-      .line03 {
-        background-color: #fff !important;
+      &.active {
+        .line01 {
+          transform: rotate(45deg) translate(3px, 3px);
+          width: 50%;
+          background-color: #fff;
+        }
+        .line02 {
+          opacity: 0;
+        }
+        .line03 {
+          transform: rotate(-45deg) translate(3px, -3px);
+          width: 50%;
+          background-color: #fff;
+        }
       }
     }
   }

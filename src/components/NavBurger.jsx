@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useMenuData } from "../hooks/useMenuData";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import {
-  useMagneticEffectWithRef,
   useButtonFillEffectWithRef,
   useButtonScrollScale,
   useNavStaggerGsap,
@@ -47,14 +46,17 @@ export const NavBurger = () => {
   }, [isActive]);
 
   // Use ref-based hooks with GSAP scope
-  const magnetButtonRef = useMagneticEffectWithRef(50);
+  // Disable magnetic effect for the outer burger button by using plain refs
+  // instead of the magnetic hooks. Keep the button-fill hook so the visual
+  // fill effect remains.
+  const magnetButtonRef = useRef(null);
   const buttonFillRef = useButtonFillEffectWithRef();
-  const burgerRef = useMagneticEffectWithRef(30);
+  const burgerRef = useRef(null);
   const scrollButtonRef = useButtonScrollScale(
     "#smooth-content", // trigger element that scrolls
     "top 0%", // start when trigger's top hits 20% of viewport
     "+=400", // end when trigger's top hits 50% of viewport
-    ".button.magnetic", // target selector to animate
+    ".button.burger-btn", // target selector to animate
     false, // markers
     true // scrub - links scale to scroll position
   );
@@ -84,7 +86,7 @@ export const NavBurger = () => {
             buttonFillRef.current = el;
             scrollButtonRef.current = el;
           }}
-          className={`button magnetic ${isActive ? "burger-active" : ""}`}
+          className={`button burger-btn ${isActive ? "burger-active" : ""}`}
           onClick={() => setIsActive(!isActive)}
         >
           <div className="button-fill"></div>
