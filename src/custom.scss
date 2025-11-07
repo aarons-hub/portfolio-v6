@@ -932,8 +932,9 @@ body {
         }
       }
       .image-title {
-        font-size: 8rem;
+        font-size: clamp(3rem, 9vw, 7rem);
         color: var(--primary-color);
+        text-align: center;
       }
       &.image01 {
         .image {
@@ -1129,5 +1130,20 @@ body {
       border-radius: 10px;
       max-width: 100%;
     }
+  }
+}
+
+@media (width < 768px) {
+  .navbar-nav .nav-link {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  .container.home .intro {
+    padding-top: clamp(2rem, 6vh, 11rem);
+    padding-bottom: clamp(5rem, 9vh, 11rem);
+  }
+  .container.home .cta-buttons {
+    flex-direction: column;
   }
 }
