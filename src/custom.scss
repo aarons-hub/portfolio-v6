@@ -40,6 +40,9 @@ body {
   --bs-body-font-family: var(--custom-font-family);
   --bs-heading-color: var(--primary-color);
 }
+body {
+  background-image: url("/images/noise.png");
+}
 
 .menu-wrapper {
   z-index: 9999;
@@ -746,6 +749,11 @@ body {
       .container {
         padding-top: 6rem;
         padding-bottom: 3rem;
+        .btn.btn-primary {
+          .button-fill {
+            background-color: var(--primary-color-200) !important;
+          }
+        }
       }
       .container.custom-pill {
         padding-top: 6rem;
@@ -773,6 +781,12 @@ body {
           a {
             color: #fff;
             text-decoration: none;
+          }
+        }
+        .btn.btn-primary {
+          border: 1px solid blue;
+          .button-fill {
+            background-color: var(--secondary-color) !important;
           }
         }
       }

@@ -227,8 +227,8 @@ export const Home = () => {
               if (homeBtnFillRef) homeBtnFillRef.current = el;
             }}
           >
-            <Link to="/portfolio">
-              <button className="btn btn-primary rounded-pill py-4 px-5 magnetic">
+            <Link className="mx-auto" to="/portfolio">
+              <button className="btn btn-primary rounded-pill py-4 px-5 mx-auto magnetic">
                 <span className="btn-text magnetic">View my work</span>
                 <div className="button-fill"></div>
               </button>
@@ -236,7 +236,7 @@ export const Home = () => {
             <button
               type="button"
               onClick={handleGetInTouch}
-              className="btn btn-primary rounded-pill py-4 px-5 magnetic"
+              className="btn btn-primary rounded-pill py-4 px-5 mx-auto magnetic"
             >
               <span className="btn-text magnetic">Get in touch</span>
               <div className="button-fill"></div>
