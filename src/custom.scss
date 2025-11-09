@@ -775,7 +775,7 @@ body {
       padding-bottom: 1rem;
       min-height: 100vh;
       .container {
-        padding-top: 6rem;
+        padding-top: 8rem;
         padding-bottom: 3rem;
         .btn.btn-primary {
           .button-fill {
@@ -954,6 +954,9 @@ body {
         }
       }
     }
+    .home-scroll-text {
+      display: none;
+    }
   }
 }
 .intro-container {
@@ -1001,8 +1004,8 @@ body {
       justify-content: center;
       align-items: center;
       .image {
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
         display: flex;
         justify-content: center;
         position: absolute;
@@ -1228,5 +1231,41 @@ body {
   }
   .container.home .cta-buttons {
     flex-direction: column;
+  }
+  .container.home .scroll-down-cta .pill .scroll-icon-wrapper {
+    transform: translateY(-26px);
+  }
+  .container.home .scroll-down-cta .home-scroll-text {
+    position: absolute;
+    color: #fff;
+    transform: translateY(105px);
+    display: block;
+  }
+  .footer.custom-footer .profile-picture {
+    max-width: 32px;
+  }
+  .footer.custom-footer h2 {
+    font-size: 2rem;
+    letter-spacing: inherit;
+    text-align: center;
+  }
+  .footer.custom-footer .footer-inner .container {
+    flex-direction: column;
+    .btn-primary {
+      margin-top: 2rem;
+      margin-right: 0 !important;
+    }
+  }
+  .footer-inner .form-inner {
+    flex-direction: column;
+  }
+  .footer-inner .send-row {
+    flex-direction: column;
+  }
+  .footer.custom-footer .footer-inner .container.top {
+    flex-direction: column;
+    .btn-primary {
+      margin: 2rem auto 0 auto !important;
+    }
   }
 }

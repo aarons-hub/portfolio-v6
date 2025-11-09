@@ -243,6 +243,7 @@ export const Home = () => {
             </button>
           </div>
           <div className="down-button scroll-down-cta">
+            <span className="home-scroll-text">Scroll down</span>
             <div className="rounded-pill py-4 px-5 pill">
               <div className="scroll-icon-wrapper">
                 <div className="icon"></div>

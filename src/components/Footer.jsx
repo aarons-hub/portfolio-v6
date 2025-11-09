@@ -115,7 +115,7 @@ export const Footer = () => {
           >
             <div className="container">
               <h2 className="fw-normal">
-                <div className="span">
+                <div className="contact-text">
                   <img
                     src={`${
                       import.meta.env.BASE_URL
@@ -123,9 +123,9 @@ export const Footer = () => {
                     alt="Profile"
                     className="img-fluid profile-picture"
                   />
-                  Let me know
+                  I'd love to hear
                 </div>
-                <div className="span">what you think</div>
+                <div className="contact-text"> your thoughts.</div>
               </h2>
             </div>
             <div className="container d-flex align-items-center justify-content-center position-relative custom-pill">
@@ -207,7 +207,7 @@ export const Footer = () => {
                       />
                     </div>
                   </div>
-                  <div className="row">
+                  <div className="row send-row">
                     <div className="col left-col"></div>
                     <div className="col send-btn">
                       <button
