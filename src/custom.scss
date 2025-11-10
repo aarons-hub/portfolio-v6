@@ -1318,4 +1318,8 @@ body {
     li {
     margin-bottom: 0.5rem;
   }
+  body .container .intro {
+    padding-top: clamp(5rem, 9vh, 11rem);
+    padding-bottom: clamp(5rem, 9vh, 11rem);
+  }
 }
