@@ -121,7 +121,7 @@ export const Portfolio = () => {
   };
 
   // Sticky cursor effect - re-initializes when currentItems changes
-  useStickyCursor(".sticky-cursor", ".sticky-cursor-container", 5, 1000, [
+  useStickyCursor(".sticky-cursor", ".sticky-cursor-container", 5, 500, [
     currentItems.length,
     selectedCategory,
     currentPage,
@@ -156,6 +156,14 @@ export const Portfolio = () => {
     img.addEventListener("load", () => wrapper.classList.add("loaded"));
     img.addEventListener("error", () => wrapper.classList.add("error"));
   });
+
+  // Adding a body class
+  useEffect(() => {
+    document.body.classList.add("portfoliopage");
+    return () => {
+      document.body.classList.remove("portfoliopage");
+    };
+  }, []);
 
   return (
     <section id="portfolio" className="portfolio-section">

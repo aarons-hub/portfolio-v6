@@ -352,9 +352,13 @@ body {
   }
 }
 
-/* Hide sticky cursor on pages that opt-out (Portfolio details) */
-.no-sticky-cursor .sticky-cursor {
+/* Hide sticky cursor on homepage */
+.homepage .sticky-cursor.active,
+.detailspage .sticky-cursor.active {
   display: none !important;
+}
+.homepage .sticky-cursor.scroll-down {
+  display: block !important;
 }
 
 // Portfolio Modal
@@ -1211,7 +1215,6 @@ body {
     }
   }
   .portfolio-image-detail {
-    min-height: 50vh;
     img {
       border-radius: 10px;
       max-width: 100%;
@@ -1325,28 +1328,10 @@ body {
   .skills-items .skill-content {
     flex-direction: column;
   }
-  html
-    body
-    div#root
-    div#smooth-wrapper
-    div#smooth-content
-    section#portfolio.portfolio-section
-    div.container.portfolio
-    div.row.p-5.portfolio-content
-    div.d-flex.p-0.pb-4.justify-content-between.btn-group-wrapper {
+  .portfolio .portfolio-content .btn-group-wrapper {
     flex-direction: column;
   }
-
-  html
-    body
-    div#root
-    div#smooth-wrapper
-    div#smooth-content
-    section#portfolio.portfolio-section
-    div.container.portfolio
-    div.row.p-5.portfolio-content
-    div.d-flex.p-0.pb-4.justify-content-between.btn-group-wrapper
-    div.d-flex.gap-3.p-0.view-selections {
+  .portfolio .portfolio-content .btn-group-wrapper .view-selections {
     display: none !important;
   }
   .portfolio .portfolio-content .btn-group-wrapper .btn-group {
@@ -1365,5 +1350,30 @@ body {
   .portfolio .portfolio-content .portfolio-items.gridview {
     columns: 2 auto;
     column-gap: 2rem;
+  }
+  .portfolio-details .portfolio-navigation-header {
+    flex-direction: column !important;
+  }
+  .portfolio-details .portfolio-navigation-header a.btn.btn {
+    padding: 1rem 2rem !important;
+    margin: auto !important;
+  }
+  .portfolio-details .portfolio-navigation-header .portfolio-navigation {
+    display: flex !important;
+    justify-content: center !important;
+    padding-top: 1rem !important;
+  }
+  .portfolio-details
+    .portfolio-navigation-header
+    .portfolio-navigation
+    button.btn {
+    padding: 1rem 2rem !important;
+  }
+  .portfolio-details .details-footer {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .portfolio-details h3 {
+    text-align: center !important;
   }
 }

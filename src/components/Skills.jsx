@@ -50,6 +50,14 @@ export const Skills = () => {
     smoother.effects(".intro h1", { lag: 0.5 });
   }, []);
 
+  // Adding a body class
+  useEffect(() => {
+    document.body.classList.add("skillspage");
+    return () => {
+      document.body.classList.remove("skillspage");
+    };
+  }, []);
+
   return (
     <section id="skills" className="skills-section">
       <div className="container skills">

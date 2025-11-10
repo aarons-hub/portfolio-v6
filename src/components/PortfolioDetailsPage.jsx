@@ -8,13 +8,11 @@ export const PortfolioDetailsPage = () => {
   const [allItems, setAllItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // disable global sticky cursor on this page by adding a body class
+  // Adding a body class
   useEffect(() => {
-    document.body.classList.add("no-sticky-cursor");
-    document.body.classList.add("no-image-cursor");
+    document.body.classList.add("detailspage");
     return () => {
-      document.body.classList.remove("no-sticky-cursor");
-      document.body.classList.remove("no-image-cursor");
+      document.body.classList.remove("detailspage");
     };
   }, []);
 

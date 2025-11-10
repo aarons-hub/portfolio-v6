@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
@@ -205,9 +205,17 @@ export const Home = () => {
     ".sticky-cursor.scroll-down",
     ".container.home .scroll-down-cta .pill",
     5,
-    1000,
+    500,
     []
   );
+
+  // Adding a body class
+  useEffect(() => {
+    document.body.classList.add("homepage");
+    return () => {
+      document.body.classList.remove("homepage");
+    };
+  }, []);
 
   return (
     <section id="home">
