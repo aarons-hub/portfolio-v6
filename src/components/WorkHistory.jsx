@@ -187,6 +187,14 @@ export const WorkHistory = () => {
     smoother.effects(".intro h1", { lag: 0.5 });
   }, []);
 
+  // Adding a body class
+  useEffect(() => {
+    document.body.classList.add("workhistorypage");
+    return () => {
+      document.body.classList.remove("workhistorypage");
+    };
+  }, []);
+
   return (
     <section id="work-history">
       <div className="container work-history">

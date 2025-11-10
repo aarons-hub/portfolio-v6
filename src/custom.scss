@@ -1282,7 +1282,7 @@ body {
     .work-history-item-content
     .col.left
     .duration {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
     letter-spacing: normal;
   }
@@ -1292,7 +1292,7 @@ body {
     .col.left
     .title {
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .work-history-items
     .work-history-item
@@ -1300,7 +1300,7 @@ body {
     .col.right
     .company {
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .work-history-items {
     height: 100vh !important;
@@ -1310,7 +1310,7 @@ body {
     top: 30px;
   }
   .work-history-items .work-history-item .description {
-    font-size: 0.85rem;
+    font-size: 0.73rem;
     padding-right: 16px;
   }
   .work-history-items
@@ -1320,6 +1320,9 @@ body {
     .description
     li {
     margin-bottom: 0.5rem;
+  }
+  .work-history .intro h1 {
+    font-size: clamp(2.25rem, 10vw, 9rem) !important;
   }
   #root .container .intro {
     padding-top: clamp(1rem, 2vh, 11rem) !important;
