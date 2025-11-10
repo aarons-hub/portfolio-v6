@@ -1268,4 +1268,54 @@ body {
       margin: 2rem auto 0 auto !important;
     }
   }
+  .footer.custom-footer .footer-inner .container {
+    padding-top: 14rem;
+  }
+  .work-history-items .work-history-item .work-history-item-content {
+    flex-direction: column;
+  }
+  .work-history-items
+    .work-history-item
+    .work-history-item-content
+    .col.left
+    .duration {
+    font-size: 2.5rem;
+    text-align: center;
+    letter-spacing: normal;
+  }
+  .work-history-items
+    .work-history-item
+    .work-history-item-content
+    .col.left
+    .title {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .work-history-items
+    .work-history-item
+    .work-history-item-content
+    .col.right
+    .company {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .work-history-items {
+    height: 100vh !important;
+  }
+  .work-history-items .work-history-item {
+    position: absolute;
+    top: 30px;
+  }
+  .work-history-items .work-history-item .description {
+    font-size: 0.85rem;
+    padding-right: 16px;
+  }
+  .work-history-items
+    .work-history-item
+    .work-history-item-content
+    .col.right
+    .description
+    li {
+    margin-bottom: 0.5rem;
+  }
 }
