@@ -1318,8 +1318,52 @@ body {
     li {
     margin-bottom: 0.5rem;
   }
-  body .container .intro {
-    padding-top: clamp(5rem, 9vh, 11rem);
-    padding-bottom: clamp(5rem, 9vh, 11rem);
+  #root .container .intro {
+    padding-top: clamp(1rem, 2vh, 11rem) !important;
+    padding-bottom: clamp(1rem, 2vh, 11rem) !important;
+  }
+  .skills-items .skill-content {
+    flex-direction: column;
+  }
+  html
+    body
+    div#root
+    div#smooth-wrapper
+    div#smooth-content
+    section#portfolio.portfolio-section
+    div.container.portfolio
+    div.row.p-5.portfolio-content
+    div.d-flex.p-0.pb-4.justify-content-between.btn-group-wrapper {
+    flex-direction: column;
+  }
+
+  html
+    body
+    div#root
+    div#smooth-wrapper
+    div#smooth-content
+    section#portfolio.portfolio-section
+    div.container.portfolio
+    div.row.p-5.portfolio-content
+    div.d-flex.p-0.pb-4.justify-content-between.btn-group-wrapper
+    div.d-flex.gap-3.p-0.view-selections {
+    display: none !important;
+  }
+  .portfolio .portfolio-content .btn-group-wrapper .btn-group {
+    flex-wrap: wrap !important;
+  }
+  .portfolio
+    .portfolio-content
+    .btn-group-wrapper
+    .btn-group
+    .custom-filter-btn {
+    padding: 1rem !important;
+  }
+  .portfolio .portfolio-content {
+    padding: 1rem !important;
+  }
+  .portfolio .portfolio-content .portfolio-items.gridview {
+    columns: 2 auto;
+    column-gap: 2rem;
   }
 }
