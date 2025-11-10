@@ -1356,26 +1356,22 @@ body {
   .skills-items .skill-content {
     flex-direction: column;
   }
-  .portfolio .portfolio-content .btn-group-wrapper {
+  .portfolio .intro .btn-group-wrapper {
     flex-direction: column;
   }
-  .portfolio .portfolio-content .btn-group-wrapper .view-selections {
+  .portfolio .intro .btn-group-wrapper .view-selections {
     display: none !important;
   }
-  .portfolio .portfolio-content .btn-group-wrapper .btn-group {
+  .portfolio .intro .btn-group-wrapper .btn-group {
     flex-wrap: wrap !important;
   }
-  .portfolio
-    .portfolio-content
-    .btn-group-wrapper
-    .btn-group
-    .custom-filter-btn {
+  .portfolio .intro .btn-group-wrapper .btn-group .custom-filter-btn {
     padding: 1rem !important;
   }
-  .portfolio .portfolio-content {
+  .portfolio .into {
     padding: 1rem !important;
   }
-  .portfolio .portfolio-content .portfolio-items.gridview {
+  .portfolio .intro .portfolio-items.gridview {
     columns: 2 auto;
     column-gap: 2rem;
   }
