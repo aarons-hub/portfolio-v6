@@ -50,3 +50,5 @@ createRoot(document.getElementById("root")).render(
     true
   );
 })();
+
+// (portfolio progress bar initialization moved to the Portfolio component)

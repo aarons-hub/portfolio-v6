@@ -1165,6 +1165,31 @@ body {
   pointer-events: none;
 }
 
+/* Global progress bar for portfolio images (top of page) */
+.portfolio-global-progress {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background: #fff;
+  z-index: 999;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+.portfolio-global-progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--secondary-color);
+  transition: width 260ms ease;
+  will-change: width;
+}
+.portfolio-global-progress.done {
+  pointer-events: none;
+  opacity: 0;
+}
+
 /* When loaded, remove shimmer and reveal sharp image */
 .portfolio-image.loaded > img {
   opacity: 1;

@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import useImageProgress from "../hooks/useImageProgress";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useNavigate } from "react-router-dom";
 import {
@@ -145,17 +146,7 @@ export const Portfolio = () => {
     smoother.effects(".intro h1", { lag: 0.5 });
   }, []);
 
-  // Image shimmer handling for portfolio images
-  document.querySelectorAll(".portfolio-image").forEach((wrapper) => {
-    const img = wrapper.querySelector("img");
-    if (!img) return;
-    if (img.complete && img.naturalWidth) {
-      wrapper.classList.add("loaded");
-      return;
-    }
-    img.addEventListener("load", () => wrapper.classList.add("loaded"));
-    img.addEventListener("error", () => wrapper.classList.add("error"));
-  });
+  // (moved) shimmer handling replaced below to scope to itemsRef
 
   // Adding a body class
   useEffect(() => {
@@ -165,14 +156,57 @@ export const Portfolio = () => {
     };
   }, []);
 
+  // Progress bar ref (scoped to this component)
+  const portfolioRef = useRef(null);
+  const itemsRef = useRef(null);
+
+  // Use reusable hook to compute image loading progress inside the portfolio items container
+  const { pct, done } = useImageProgress(itemsRef, {
+    selector: ".portfolio-image img",
+    approxSize: 40000,
+    deps: [filtered, currentPage, viewMode],
+  });
+
+  // Shimmer handling scoped to the itemsRef container so listeners don't run globally
+  useEffect(() => {
+    const container = itemsRef?.current;
+    if (!container) return;
+
+    const wrappers = Array.from(container.querySelectorAll(".portfolio-image"));
+    const listeners = [];
+
+    wrappers.forEach((wrapper) => {
+      const img = wrapper.querySelector("img");
+      if (!img) return;
+      if (img.complete && img.naturalWidth) {
+        wrapper.classList.add("loaded");
+        return;
+      }
+
+      const onLoad = () => wrapper.classList.add("loaded");
+      const onError = () => wrapper.classList.add("error");
+
+      img.addEventListener("load", onLoad);
+      img.addEventListener("error", onError);
+
+      listeners.push({ img, onLoad, onError });
+    });
+
+    return () => {
+      listeners.forEach(({ img, onLoad, onError }) => {
+        img.removeEventListener("load", onLoad);
+        img.removeEventListener("error", onError);
+      });
+    };
+  }, [filtered, currentPage, viewMode]);
+
   return (
     <section id="portfolio" className="portfolio-section">
       <div className="container portfolio">
         <div className="intro text-center">
           <h1 className="fw-normal">P0R7FOL/O</h1>
-        </div>
-        <div className="row p-5 portfolio-content">
-          <div className="d-flex p-0 pb-4 justify-content-between btn-group-wrapper">
+
+          <div className="d-flex justify-content-between pb-4 btn-group-wrapper">
             <div
               className="p-0 gap-3 btn-group"
               ref={(el) => {
@@ -264,6 +298,13 @@ export const Portfolio = () => {
               </button>
             </div>
           </div>
+          <div
+            className={`portfolio-global-progress ${done ? "done" : ""}`}
+            ref={portfolioRef}
+            aria-hidden="true"
+          >
+            <div className="bar" style={{ width: `${pct}%` }} />
+          </div>
 
           <div
             className={`d-flex w-100 px-0 py-3 text-uppercase header-container ${
@@ -275,6 +316,9 @@ export const Portfolio = () => {
           </div>
 
           <div
+            ref={(el) => {
+              itemsRef.current = el;
+            }}
             className={`position-relative portfolio-items ${
               viewMode === "listview" ? "listview" : "gridview"
             }`}
