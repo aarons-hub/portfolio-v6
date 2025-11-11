@@ -268,10 +268,11 @@ export const Home = () => {
               <img
                 src={`${
                   import.meta.env.BASE_URL
-                }images/portfolio/images/DSC_1862.jpg`}
+                }images/portfolio/images/DSC1862.jpg`}
                 alt="Decoration"
                 loading="lazy"
                 className="thumb"
+                decoding="async"
               />
             </div>
             <h2 className="fw-normal image-title">PH0TOGR4PHY</h2>
@@ -286,6 +287,7 @@ export const Home = () => {
                 alt="Decoration"
                 loading="lazy"
                 className="thumb"
+                decoding="async"
               />
             </div>
             <h2 className="fw-normal image-title">PHOTO5HOP</h2>
@@ -298,6 +300,7 @@ export const Home = () => {
                 alt="Decoration"
                 loading="lazy"
                 className="thumb"
+                decoding="async"
               />
             </div>
             <h2 className="fw-normal image-title">FRON7-END W3B</h2>
@@ -312,6 +315,7 @@ export const Home = () => {
                 alt="Decoration"
                 loading="lazy"
                 className="thumb"
+                decoding="async"
               />
             </div>
             <h2 className="fw-normal image-title">PUBL1SHING</h2>
@@ -326,6 +330,7 @@ export const Home = () => {
                 alt="Decoration"
                 loading="lazy"
                 className="thumb"
+                decoding="async"
               />
             </div>
             <h2 className="fw-normal image-title">GR4PHIC DES1GN</h2>

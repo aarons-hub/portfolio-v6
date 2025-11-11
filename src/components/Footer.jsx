@@ -113,7 +113,7 @@ export const Footer = () => {
               if (footerBtnFillRef) footerBtnFillRef.current = el;
             }}
           >
-            <div className="container">
+            <div className="container pb-5 contact-heading">
               <h2 className="fw-normal">
                 <div className="contact-text">
                   <img
@@ -128,7 +128,7 @@ export const Footer = () => {
                 <div className="contact-text"> your thoughts.</div>
               </h2>
             </div>
-            <div className="container d-flex align-items-center justify-content-center position-relative custom-pill">
+            <div className="container d-flex align-items-center justify-content-center position-relative cta-pill">
               <div className="footer-line"></div>
               <div
                 className="d-flex align-items-center justify-content-center rounded-pill p-4 footer-callout"
