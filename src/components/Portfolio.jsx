@@ -415,7 +415,7 @@ export const Portfolio = () => {
 
         {/* Pagination controls */}
         {totalPages > 1 && (
-          <div className="d-flex w-100 justify-content-center pt-4 pagination-wrapper">
+          <div className="d-flex w-100 justify-content-center pt-4 pb-5 pagination-wrapper">
             <div className="btn-group gap-3 pt-4">
               <button
                 className={`btn btn-primary rounded-pill py-4 px-5 custom-pagination-btn previous ${
