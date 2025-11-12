@@ -28,6 +28,7 @@ export const HomePageImages = () => {
 
     const ctx2 = gsap.context(() => {
       const tl2 = gsap.timeline({
+        defaults: { ease: "power4.inOut" },
         scrollTrigger: {
           trigger: container,
           start: "top 0%",
@@ -81,6 +82,7 @@ export const HomePageImages = () => {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
+        defaults: { ease: "power4.inOut" },
         scrollTrigger: {
           trigger: container,
           start: "top top",
@@ -266,7 +268,7 @@ export const HomePageImages = () => {
             decoding="async"
           />
         </div>
-        <div className="card-image image05" data-lag="1">
+        <div className="card-image image05" data-lag="2.6">
           <img
             src={`${
               import.meta.env.BASE_URL

@@ -144,6 +144,8 @@ export const Portfolio = () => {
     if (!smoother) return;
 
     smoother.effects(".intro h1", { lag: 0.5 });
+
+    smoother.effects(".btn-group-wrapper", { lag: 0.6, speed: 0.9 });
   }, []);
 
   // (moved) shimmer handling replaced below to scope to itemsRef
