@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useMenuData } from "../hooks/useMenuData";
-import { useNavScroll } from "./custom";
+import { useNavScroll } from "../hooks/custom";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 export const Header = () => {

@@ -8,7 +8,7 @@ import {
   useButtonFillEffectForChildren,
   useStickyCursor,
   useImageCursor,
-} from "./custom";
+} from "../hooks/custom";
 
 export const Portfolio = () => {
   const [data, setData] = useState([]);

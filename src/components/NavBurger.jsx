@@ -12,7 +12,7 @@ import {
   useSvgCurveGsap,
   useOverlayCloseMenu,
   useNavLinkCloseMenu,
-} from "./custom";
+} from "../hooks/custom";
 
 export const NavBurger = () => {
   const { data: menuItems } = useMenuData();

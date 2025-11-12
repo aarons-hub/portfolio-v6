@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { useScrollAnimation } from "./custom";
+import { useScrollAnimation } from "../hooks/custom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import emailjs from "@emailjs/browser";
@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import {
   useMagneticEffectForChildren,
   useButtonFillEffectForChildren,
-} from "./custom";
+} from "../hooks/custom";
 
 export const Footer = () => {
   const form = useRef();
