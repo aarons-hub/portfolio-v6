@@ -6,16 +6,43 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
+// Lightweight touch / coarse-pointer detection used to opt-out of
+// mouse-only interactions (magnetic effects, sticky cursors) on
+// touch-first devices. Kept small and defensive so it can run early.
+const prefersCoarsePointer = () => {
+  try {
+    if (typeof navigator !== "undefined") {
+      if (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) return true;
+    }
+    if (typeof window !== "undefined") {
+      if ("ontouchstart" in window) return true;
+      if (window.matchMedia) {
+        if (window.matchMedia("(pointer: coarse)").matches) return true;
+        if (window.matchMedia("(hover: none)").matches) return true;
+      }
+    }
+  } catch {
+    // swallow - fallback to false
+  }
+  return false;
+};
+
 // Ref-based magnetic effect using GSAP scope
 export const useMagneticEffectWithRef = (strength = 50) => {
   const magnetRef = useRef(null);
 
   useGSAP(
     () => {
+      // Don't initialize magnetic interactions on touch-first devices.
+      if (prefersCoarsePointer()) return;
+
       const magnet = magnetRef.current;
       if (!magnet) return;
 
       const moveMagnet = (event) => {
+        // When using pointer events, ignore non-mouse input
+        if (event.pointerType && event.pointerType !== "mouse") return;
+
         const bounding = magnet.getBoundingClientRect();
 
         gsap.to(magnet, {
@@ -30,8 +57,10 @@ export const useMagneticEffectWithRef = (strength = 50) => {
         });
       };
 
-      const resetMagnet = () => {
-        gsap.to(magnet, {
+      const resetMagnet = (event) => {
+        // For pointerleave the currentTarget is the magnet
+        const tgt = event.currentTarget || magnet;
+        gsap.to(tgt, {
           duration: 1,
           x: 0,
           y: 0,
@@ -39,13 +68,13 @@ export const useMagneticEffectWithRef = (strength = 50) => {
         });
       };
 
-      magnet.addEventListener("mousemove", moveMagnet);
-      magnet.addEventListener("mouseout", resetMagnet);
+      magnet.addEventListener("pointermove", moveMagnet);
+      magnet.addEventListener("pointerleave", resetMagnet);
 
       // Cleanup handled by useGSAP
       return () => {
-        magnet.removeEventListener("mousemove", moveMagnet);
-        magnet.removeEventListener("mouseout", resetMagnet);
+        magnet.removeEventListener("pointermove", moveMagnet);
+        magnet.removeEventListener("pointerleave", resetMagnet);
       };
     },
     { scope: magnetRef, dependencies: [strength] }
@@ -269,12 +298,13 @@ export const useMagneticEffectForChildren = (
           gsap.to(animatedEl, { duration: 1, x: 0, y: 0, ease: "power4.out" });
         };
 
-        el.addEventListener("mousemove", moveMagnet);
-        el.addEventListener("mouseout", resetMagnet);
+        // pointer events - ignore non-mouse inputs inside handler
+        el.addEventListener("pointermove", moveMagnet);
+        el.addEventListener("pointerleave", resetMagnet);
 
         return () => {
-          el.removeEventListener("mousemove", moveMagnet);
-          el.removeEventListener("mouseout", resetMagnet);
+          el.removeEventListener("pointermove", moveMagnet);
+          el.removeEventListener("pointerleave", resetMagnet);
         };
       });
 

@@ -202,7 +202,7 @@ export const Portfolio = () => {
 
   return (
     <section id="portfolio" className="portfolio-section">
-      <div className="container portfolio">
+      <div className="container pb-5 portfolio">
         <div className="intro text-center">
           <h1 className="fw-normal">P0R7FOL/O</h1>
         </div>
@@ -415,7 +415,7 @@ export const Portfolio = () => {
 
         {/* Pagination controls */}
         {totalPages > 1 && (
-          <div className="d-flex w-100 justify-content-center pt-4 pb-5 pagination-wrapper">
+          <div className="d-flex w-100 justify-content-center pt-4 pagination-wrapper">
             <div className="btn-group gap-3 pt-4">
               <button
                 className={`btn btn-primary rounded-pill py-4 px-5 custom-pagination-btn previous ${
