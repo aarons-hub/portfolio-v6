@@ -1475,4 +1475,11 @@ body {
       }
     }
   }
+  .footer .container.contact {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .footer .container.contact .col.send-btn {
+    text-align: center;
+  }
 }
