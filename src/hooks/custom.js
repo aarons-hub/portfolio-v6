@@ -6,75 +6,66 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
-// Lightweight touch / coarse-pointer detection used to opt-out of
-// mouse-only interactions (magnetic effects, sticky cursors) on
-// touch-first devices. Kept small and defensive so it can run early.
-const prefersCoarsePointer = () => {
-  try {
-    if (typeof navigator !== "undefined") {
-      if (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) return true;
-    }
-    if (typeof window !== "undefined") {
-      if ("ontouchstart" in window) return true;
-      if (window.matchMedia) {
-        if (window.matchMedia("(pointer: coarse)").matches) return true;
-        if (window.matchMedia("(hover: none)").matches) return true;
-      }
-    }
-  } catch {
-    // swallow - fallback to false
-  }
-  return false;
-};
-
 // Ref-based magnetic effect using GSAP scope
 export const useMagneticEffectWithRef = (strength = 50) => {
   const magnetRef = useRef(null);
 
   useGSAP(
     () => {
-      // Don't initialize magnetic interactions on touch-first devices.
-      if (prefersCoarsePointer()) return;
+      // Use GSAP matchMedia so magnetic interactions only initialize on
+      // devices that match a fine pointer and a minimum width. The media
+      // query below targets desktop-like pointers and screens wider than
+      // 540px (original behavior used >540px).
+      const mm = gsap.matchMedia();
 
-      const magnet = magnetRef.current;
-      if (!magnet) return;
+      mm.add("(pointer: fine) and (min-width: 541px)", () => {
+        const magnet = magnetRef.current;
+        if (!magnet) return;
 
-      const moveMagnet = (event) => {
-        // When using pointer events, ignore non-mouse input
-        if (event.pointerType && event.pointerType !== "mouse") return;
+        const moveMagnet = (event) => {
+          // Defensive: ignore non-mouse pointer types
+          if (event.pointerType && event.pointerType !== "mouse") return;
 
-        const bounding = magnet.getBoundingClientRect();
+          const bounding = magnet.getBoundingClientRect();
 
-        gsap.to(magnet, {
-          duration: 1,
-          x:
-            ((event.clientX - bounding.left) / magnet.offsetWidth - 0.5) *
-            strength,
-          y:
-            ((event.clientY - bounding.top) / magnet.offsetHeight - 0.5) *
-            strength,
-          ease: "power4.out",
-        });
-      };
+          gsap.to(magnet, {
+            duration: 1,
+            x:
+              ((event.clientX - bounding.left) / magnet.offsetWidth - 0.5) *
+              strength,
+            y:
+              ((event.clientY - bounding.top) / magnet.offsetHeight - 0.5) *
+              strength,
+            ease: "power4.out",
+          });
+        };
 
-      const resetMagnet = (event) => {
-        // For pointerleave the currentTarget is the magnet
-        const tgt = event.currentTarget || magnet;
-        gsap.to(tgt, {
-          duration: 1,
-          x: 0,
-          y: 0,
-          ease: "power4.out",
-        });
-      };
+        const resetMagnet = (event) => {
+          const tgt = event.currentTarget || magnet;
+          gsap.to(tgt, {
+            duration: 1,
+            x: 0,
+            y: 0,
+            ease: "power4.out",
+          });
+        };
 
-      magnet.addEventListener("pointermove", moveMagnet);
-      magnet.addEventListener("pointerleave", resetMagnet);
+        magnet.addEventListener("pointermove", moveMagnet);
+        magnet.addEventListener("pointerleave", resetMagnet);
 
-      // Cleanup handled by useGSAP
+        return () => {
+          magnet.removeEventListener("pointermove", moveMagnet);
+          magnet.removeEventListener("pointerleave", resetMagnet);
+        };
+      });
+
+      // Ensure matchMedia cleans up when this effect is torn down
       return () => {
-        magnet.removeEventListener("pointermove", moveMagnet);
-        magnet.removeEventListener("pointerleave", resetMagnet);
+        try {
+          mm.revert();
+        } catch {
+          // noop
+        }
       };
     },
     { scope: magnetRef, dependencies: [strength] }
@@ -271,45 +262,62 @@ export const useMagneticEffectForChildren = (
       const container = containerRef.current;
       if (!container) return;
 
-      const children = Array.from(container.querySelectorAll(childSelector));
-      if (!children.length) return;
+      // Use GSAP matchMedia so this only runs for fine-pointer (mouse)
+      // devices and screens wider than 540px. This avoids initializing
+      // magnetic behavior on touch-first devices (iOS, Android).
+      const mm = gsap.matchMedia();
 
-      const listeners = children.map((el) => {
-        const animatedEl =
-          animateParentIfAnchor && el.tagName === "A" && el.parentElement
-            ? el.parentElement
-            : el;
+      mm.add("(pointer: fine) and (min-width: 541px)", () => {
+        const children = Array.from(container.querySelectorAll(childSelector));
+        if (!children.length) return;
 
-        const moveMagnet = (event) => {
-          const rect = animatedEl.getBoundingClientRect();
-          gsap.to(animatedEl, {
-            duration: 1,
-            x:
-              ((event.clientX - rect.left) / animatedEl.offsetWidth - 0.5) *
-              strength,
-            y:
-              ((event.clientY - rect.top) / animatedEl.offsetHeight - 0.5) *
-              strength,
-            ease: "power4.out",
-          });
-        };
+        const listeners = children.map((el) => {
+          const animatedEl =
+            animateParentIfAnchor && el.tagName === "A" && el.parentElement
+              ? el.parentElement
+              : el;
 
-        const resetMagnet = () => {
-          gsap.to(animatedEl, { duration: 1, x: 0, y: 0, ease: "power4.out" });
-        };
+          const moveMagnet = (event) => {
+            // Defensive: ignore non-mouse pointer types
+            if (event.pointerType && event.pointerType !== "mouse") return;
 
-        // pointer events - ignore non-mouse inputs inside handler
-        el.addEventListener("pointermove", moveMagnet);
-        el.addEventListener("pointerleave", resetMagnet);
+            const rect = animatedEl.getBoundingClientRect();
+            gsap.to(animatedEl, {
+              duration: 1,
+              x:
+                ((event.clientX - rect.left) / animatedEl.offsetWidth - 0.5) *
+                strength,
+              y:
+                ((event.clientY - rect.top) / animatedEl.offsetHeight - 0.5) *
+                strength,
+              ease: "power4.out",
+            });
+          };
 
-        return () => {
-          el.removeEventListener("pointermove", moveMagnet);
-          el.removeEventListener("pointerleave", resetMagnet);
-        };
+          const resetMagnet = (event) => {
+            const tgt = event.currentTarget || animatedEl;
+            gsap.to(tgt, { duration: 1, x: 0, y: 0, ease: "power4.out" });
+          };
+
+          el.addEventListener("pointermove", moveMagnet);
+          el.addEventListener("pointerleave", resetMagnet);
+
+          return () => {
+            el.removeEventListener("pointermove", moveMagnet);
+            el.removeEventListener("pointerleave", resetMagnet);
+          };
+        });
+
+        return () => listeners.forEach((off) => off());
       });
 
-      // Cleanup all listeners
-      return () => listeners.forEach((off) => off());
+      return () => {
+        try {
+          mm.revert();
+        } catch {
+          // noop
+        }
+      };
     },
     {
       scope: containerRef,

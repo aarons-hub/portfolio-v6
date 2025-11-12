@@ -352,42 +352,6 @@ body {
   }
 }
 
-/* Defensive fallback: when `.no-magnetic` is present on body we force-disable
-   all magnetic transforms and hide cursor overlays. This guarantees touch
-   devices won't show mouse-only visual effects even if JS runs or pointer
-   events are synthesized. */
-body.no-magnetic {
-  /* Neutralize transform-based motion for common magnetic selectors */
-  .magnetic,
-  .magnetic *,
-  .btn-text,
-  .button-fill,
-  a.nav-link,
-  .nav-item,
-  .burger,
-  .button.magnetic {
-    transform: none !important;
-    transition: none !important;
-    will-change: auto !important;
-  }
-
-  /* Hide cursor overlays */
-  .sticky-cursor,
-  .image-cursor,
-  .mouse-pos-list-image,
-  .mouse-pos-list-btn,
-  .mouse-pos-list-span {
-    display: none !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-
-  /* Disable button-fill visuals on touch devices */
-  .button-fill {
-    display: none !important;
-  }
-}
-
 /* Hide sticky cursor on homepage */
 .homepage .sticky-cursor.active,
 .detailspage .sticky-cursor.active {
@@ -1150,9 +1114,9 @@ body.no-magnetic {
     }
   }
   .timeline-container {
-    border: 1px solid #eee;
+    background-color: #fff;
     .timeline-progress-bar {
-      background-color: var(--primary-color-700);
+      background-color: var(--secondary-color);
       height: 2px;
     }
   }

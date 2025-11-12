@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import moment from "moment";
 import { useLocation } from "react-router-dom";
 import { useScrollAnimation } from "../hooks/custom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,6 +12,18 @@ import {
 } from "../hooks/custom";
 
 export const Footer = () => {
+  const [time, setTime] = useState(moment().format("hh:mm:ss A"));
+  const formatCopyright = moment().format("YYYY");
+
+  // Update every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(moment().format("hh:mm:ss A"));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const form = useRef();
   const [done, setDone] = useState(false);
   const location = useLocation();
@@ -235,6 +248,19 @@ export const Footer = () => {
                 <span className="btn-text magnetic">Go to top</span>
                 <div className="button-fill"></div>
               </button>
+            </div>
+          </div>
+          <div className="container pb-5 date-and-copyright">
+            <div className="row">
+              <div className="col">
+                <div className="date bne-date">{time}</div>
+              </div>
+              <div className="col">
+                {" "}
+                <div className="text-end copyright-contents">
+                  ⓒ {formatCopyright}
+                </div>
+              </div>
             </div>
           </div>
           <div className="footer-shadow"></div>
