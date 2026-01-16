@@ -843,5 +843,32 @@
     "content": "",
     "category": "Print",
     "sortorder": 128
+  },
+  {
+    "id": 96,
+    "image": "/images/portfolio/images/DSCF5562.jpg",
+    "thumbnail": "/images/portfolio/thumbnails/DSCF5562.jpg",
+    "title": "Spirit House Restaurant packaging",
+    "content": "",
+    "category": "Print",
+    "sortorder": 141
+  },
+  {
+    "id": 97,
+    "image": "/images/portfolio/images/pan_bread_pk.jpg",
+    "thumbnail": "/images/portfolio/thumbnails/pan_bread_pk.jpg",
+    "title": "La Famiglia packaging",
+    "content": "",
+    "category": "Print",
+    "sortorder": 142
+  },
+  {
+    "id": 98,
+    "image": "/images/portfolio/images/DSCF3201.jpg",
+    "thumbnail": "/images/portfolio/thumbnails/DSCF3201.jpg",
+    "title": "La Famiglia packaging",
+    "content": "",
+    "category": "Print",
+    "sortorder": 143
   }
 ]
