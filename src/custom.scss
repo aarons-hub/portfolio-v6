@@ -1067,18 +1067,18 @@ body {
   min-height: 50vh;
 
   .work-history-item {
-    position: absolute;
     top: 100px;
     left: 0;
 
     .work-history-item-content {
       position: relative;
+      padding-bottom: 2rem;
 
       .col.left {
         .duration {
           color: var(--primary-color);
           font-weight: 500;
-          font-size: 6.5rem;
+          font-size: 5rem;
           line-height: 0.8;
           font-family: "Roboto Mono", monospace;
           font-optical-sizing: auto;
@@ -1373,13 +1373,7 @@ body {
     text-align: center;
     font-size: 0.8rem;
   }
-  .work-history-items {
-    height: 100vh !important;
-  }
-  .work-history-items .work-history-item {
-    position: absolute;
-    top: 30px;
-  }
+
   .work-history-items .work-history-item .description {
     font-size: 0.7rem;
     padding-right: 16px;

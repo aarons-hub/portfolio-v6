@@ -40,144 +40,7 @@ export const WorkHistory = () => {
     fetchResume();
   }, []);
 
-  useLayoutEffect(() => {
-    if (!listRef.current) return;
 
-    const durations = listRef.current.querySelectorAll(".duration");
-    const splits = [];
-
-    durations.forEach((el) => {
-      const split = new SplitText(el, {
-        type: "chars",
-        charsClass: "char++",
-        mask: "chars",
-      });
-      splits.push(split);
-    });
-
-    return () => {
-      splits.forEach((s) => s.revert());
-    };
-  }, [resumedata.length]);
-
-  useLayoutEffect(() => {
-    if (!listRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const tlWork = gsap.timeline({
-        scrollTrigger: {
-          trigger: listRef.current,
-          start: "top 25%",
-          end: "+=2000",
-          pin: true,
-          scrub: 1,
-          markers: false,
-          pinSpacing: true,
-        },
-      });
-
-      // timeline scrub indicator: animate left->right as user scrolls through tlWork
-      const timelineEl = listRef.current.querySelector(
-        ".timeline-progress-bar"
-      );
-      if (timelineEl) {
-        gsap.set(timelineEl, { transformOrigin: "left center" });
-        gsap.fromTo(
-          timelineEl,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: listRef.current,
-              start: "top 25%",
-              end: "+=2000",
-              scrub: true,
-              markers: false,
-            },
-          }
-        );
-      }
-
-      const addStepForId = (id) => {
-        const inSelectors = [
-          `.work-history-item.item-${id} .duration .char-mask .char3`,
-          `.work-history-item.item-${id} .duration .char-mask .char4`,
-          `.work-history-item.item-${id} .duration .char-mask .char8`,
-          `.work-history-item.item-${id} .duration .char-mask .char9`,
-        ];
-        const inSelectors2 = [
-          `.work-history-item.item-${id} .duration .char-mask .char1`,
-          `.work-history-item.item-${id} .duration .char-mask .char2`,
-          `.work-history-item.item-${id} .duration .char-mask .char6`,
-          `.work-history-item.item-${id} .duration .char-mask .char7`,
-        ];
-
-        const inSelectorsHyphen = [
-          `.work-history-item.item-${id} .duration .char-mask .char5`,
-        ];
-
-        const inTargetsHyphen = gsap.utils.toArray(inSelectorsHyphen.join(","));
-
-        if (inTargetsHyphen.length) {
-          tlWork.from(inTargetsHyphen, { autoAlpha: 0 }, "<");
-        }
-
-        const inTargets2 = gsap.utils.toArray(inSelectors2.join(","));
-
-        if (inTargets2.length) {
-          tlWork.from(inTargets2, { y: 96 }, "<");
-        }
-
-        const inTargets = gsap.utils.toArray(inSelectors.join(","));
-
-        if (inTargets.length) {
-          tlWork.from(inTargets, { y: 96 }, ">");
-        }
-
-        const colSelector = `.work-history-item.item-${id} .col.right`;
-
-        const colTargets = gsap.utils.toArray(colSelector);
-        if (colTargets.length) {
-          tlWork.from(colTargets, { y: 400, autoAlpha: 0 }, "<");
-        }
-
-        const titleSelector = `.work-history-item.item-${id} .title`;
-        const titleTargets = gsap.utils.toArray(titleSelector);
-        if (titleTargets.length) {
-          tlWork.from(titleTargets, { y: 50, autoAlpha: 0 }, "<");
-        }
-
-        tlWork.to(".timeline-progress", { scaleX: 0.5 }, "<");
-
-        tlWork.to({}, { duration: 1 });
-
-        if (inTargetsHyphen.length) {
-          tlWork.to(inTargetsHyphen, { autoAlpha: 0 });
-        }
-
-        if (inTargets2.length) {
-          tlWork.to(inTargets2, { y: -96 });
-        }
-
-        if (inTargets.length) {
-          tlWork.to(inTargets, { y: -96 }, "<");
-        }
-
-        if (colTargets.length) {
-          tlWork.to(colTargets, { y: -400, autoAlpha: 0 }, "<");
-        }
-
-        if (titleTargets.length) {
-          tlWork.to(titleTargets, { y: 50, autoAlpha: 0 }, "<");
-        }
-      };
-
-      resumedata.forEach((item) => addStepForId(item.id));
-    }, listRef);
-
-    return () => ctx.revert();
-  }, [resumedata]);
 
   // ScrollSmoother effects via CSS selector method (no data-* attributes)
   useEffect(() => {
@@ -227,9 +90,7 @@ export const WorkHistory = () => {
           </div>
         ))}
 
-        <div className="timeline-container">
-          <div className="timeline-progress-bar"></div>
-        </div>
+
       </div>
     </section>
   );
