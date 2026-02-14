@@ -554,7 +554,9 @@ body {
         z-index: 9998;
         opacity: 0;
         scale: 0.8;
-        transition: opacity 0.3s ease, scale 0.3s ease;
+        transition:
+          opacity 0.3s ease,
+          scale 0.3s ease;
       }
 
       .headings-container {
@@ -906,7 +908,9 @@ body {
     z-index: 9998;
     opacity: 0;
     scale: 0.8;
-    transition: opacity 0.3s ease, scale 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      scale 0.3s ease;
 
     img {
       width: 100%;
@@ -1146,7 +1150,9 @@ body {
   opacity: 0;
   filter: blur(8px) saturate(0.95);
   transform: translateZ(0);
-  transition: opacity 360ms ease, filter 360ms ease;
+  transition:
+    opacity 360ms ease,
+    filter 360ms ease;
 }
 
 /* Shimmer skeleton using pseudo-element on the container */
