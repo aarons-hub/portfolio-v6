@@ -40,8 +40,6 @@ export const WorkHistory = () => {
     fetchResume();
   }, []);
 
-
-
   // ScrollSmoother effects via CSS selector method (no data-* attributes)
   useEffect(() => {
     const smoother = ScrollSmoother.get();
@@ -89,8 +87,6 @@ export const WorkHistory = () => {
             </div>
           </div>
         ))}
-
-
       </div>
     </section>
   );
